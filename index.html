@@ -1,0 +1,1310 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CT Nest | Find Your Perfect Place in Chitwan</title>
+<meta name="description" content="Find rooms, houses, land and commercial properties for rent and sale in Chitwan, Nepal.">
+<meta name="theme-color" content="#087f8c">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --teal:#087f8c;
+  --dark:#075d6c;
+  --gold:#f3b43f;
+  --bg:#f6f8fb;
+  --text:#17232b;
+  --muted:#71808a;
+  --border:#e5ebee;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+
+header{
+  background:white;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:20;
+}
+
+.nav{
+  max-width:1150px;
+  margin:auto;
+  padding:12px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  color:var(--teal);
+  font-size:23px;
+  font-weight:900;
+  text-decoration:none;
+}
+
+.logoMark{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  background:var(--teal);
+  color:white;
+  border-radius:12px;
+}
+
+.navlinks{
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+
+.navlinks a{
+  color:#33434c;
+  text-decoration:none;
+  font-size:14px;
+  font-weight:700;
+}
+
+.navlinks a:hover{color:var(--teal)}
+
+.primary{
+  border:0;
+  background:var(--teal);
+  color:white;
+  padding:11px 17px;
+  border-radius:10px;
+  font-weight:800;
+}
+
+.primary:hover{background:var(--dark)}
+
+.hero{
+  background:linear-gradient(135deg,var(--teal),var(--dark));
+  color:white;
+  padding:65px 18px 72px;
+}
+
+.heroInner{
+  max-width:1050px;
+  margin:auto;
+  text-align:center;
+}
+
+.hero h1{
+  font-size:43px;
+  line-height:1.15;
+  margin-bottom:13px;
+}
+
+.hero p{
+  font-size:16px;
+  opacity:.92;
+  margin-bottom:28px;
+}
+
+.search{
+  background:white;
+  padding:10px;
+  border-radius:14px;
+  display:grid;
+  grid-template-columns:1.3fr .8fr .45fr;
+  gap:9px;
+  box-shadow:0 12px 35px #0002;
+}
+
+.search input,.search select{
+  min-width:0;
+  padding:14px;
+  border:1px solid #e0e7eb;
+  border-radius:9px;
+  outline:none;
+  color:#27343a;
+  background:white;
+}
+
+.search button{
+  background:var(--gold);
+  color:#18272b;
+  border:0;
+  border-radius:9px;
+  font-weight:900;
+}
+
+.section{
+  max-width:1150px;
+  margin:auto;
+  padding:43px 20px;
+}
+
+.heading{margin-bottom:20px}
+.heading h2{font-size:27px}
+.heading p{
+  color:var(--muted);
+  font-size:14px;
+  margin-top:6px;
+}
+
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.category{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:23px 12px;
+  text-align:center;
+  transition:.2s;
+  cursor:pointer;
+}
+
+.category:hover{
+  transform:translateY(-3px);
+  border-color:#9ed4d9;
+}
+
+.category .icon{
+  font-size:34px;
+  margin-bottom:9px;
+}
+
+.category h3{font-size:16px;margin-bottom:5px}
+.category p{font-size:12px;color:var(--muted)}
+
+.propertyGrid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 4px 15px #00000009;
+}
+
+.photoBox{
+  height:200px;
+  background:#e8f1f3;
+  position:relative;
+  overflow:hidden;
+}
+
+.photoBox img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.photoFallback{
+  height:100%;
+  display:grid;
+  place-items:center;
+  font-size:65px;
+}
+
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  padding:6px 10px;
+  background:var(--teal);
+  color:white;
+  border-radius:7px;
+  font-size:11px;
+  font-weight:900;
+}
+
+.cardBody{padding:17px}
+.cardBody h3{font-size:18px;margin-bottom:8px}
+
+.location{
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:12px;
+}
+
+.price{
+  font-size:20px;
+  color:var(--teal);
+  font-weight:900;
+  margin-bottom:12px;
+}
+
+.meta,.facilityList{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+}
+
+.meta span,.facility{
+  font-size:11px;
+  padding:6px 8px;
+  background:#f1f6f7;
+  border-radius:7px;
+  color:#53636b;
+}
+
+.facility{
+  background:white;
+  border:1px solid var(--border);
+}
+
+.view{
+  width:100%;
+  margin-top:15px;
+  padding:11px;
+  border:1px solid var(--teal);
+  border-radius:9px;
+  background:white;
+  color:var(--teal);
+  font-weight:800;
+}
+
+.view:hover{
+  background:var(--teal);
+  color:white;
+}
+
+.empty{
+  grid-column:1/-1;
+  text-align:center;
+  padding:35px;
+  background:white;
+  border:1px dashed #ccd7db;
+  border-radius:12px;
+  color:var(--muted);
+}
+
+.cta{
+  background:#e9f6f7;
+  border-radius:17px;
+  text-align:center;
+  padding:32px 20px;
+}
+
+.cta h2{margin-bottom:8px}
+.cta p{
+  color:#68777f;
+  font-size:14px;
+  margin-bottom:18px;
+}
+
+footer{
+  background:#14252c;
+  color:#c8d4d8;
+}
+
+.footer{
+  max-width:1150px;
+  margin:auto;
+  padding:34px 20px;
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+}
+
+.footer strong{color:white;font-size:21px}
+.footer p{font-size:13px;margin-top:7px}
+
+/* MODALS */
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:100;
+  background:#0009;
+  padding:15px;
+  overflow:auto;
+}
+
+.modalBox{
+  max-width:720px;
+  margin:25px auto;
+  background:white;
+  border-radius:16px;
+  padding:25px;
+  position:relative;
+}
+
+.close{
+  position:absolute;
+  right:14px;
+  top:8px;
+  border:0;
+  background:none;
+  font-size:29px;
+  color:#68757c;
+}
+
+.modalBox h2{font-size:25px}
+
+.sub{
+  color:var(--muted);
+  font-size:13px;
+  margin-top:6px;
+}
+
+.formGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:13px;
+  margin-top:21px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field.full{grid-column:1/-1}
+
+.field label{
+  font-size:12px;
+  font-weight:800;
+  color:#46545b;
+}
+
+.field input,.field select,.field textarea{
+  width:100%;
+  border:1px solid #dce4e8;
+  border-radius:9px;
+  padding:12px;
+  outline:none;
+  background:white;
+}
+
+.field input:focus,.field select:focus,.field textarea:focus{
+  border-color:var(--teal);
+}
+
+.field textarea{
+  min-height:90px;
+  resize:vertical;
+}
+
+.facilityChecks{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+
+.facilityChecks label{
+  background:#f4f7f8;
+  border-radius:8px;
+  padding:10px;
+  font-size:12px;
+  cursor:pointer;
+}
+
+.photoUpload{
+  border:2px dashed #b9cbd0;
+  border-radius:12px;
+  padding:17px;
+  text-align:center;
+  background:#fafcfc;
+}
+
+.photoUpload input{
+  margin-top:12px;
+}
+
+.photoNote{
+  font-size:12px;
+  color:#8a650d;
+  margin-top:10px;
+}
+
+.previewGrid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:12px;
+}
+
+.preview{
+  height:80px;
+  border-radius:8px;
+  overflow:hidden;
+  background:#edf2f3;
+}
+
+.preview img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.submit{
+  grid-column:1/-1;
+  padding:14px;
+  border:0;
+  background:var(--teal);
+  color:white;
+  border-radius:10px;
+  font-weight:900;
+}
+
+.submit:disabled{opacity:.6}
+
+.detailsPhoto{
+  width:100%;
+  max-height:330px;
+  object-fit:cover;
+  border-radius:11px;
+  margin:15px 0;
+}
+
+.contactButton{
+  display:block;
+  text-align:center;
+  text-decoration:none;
+  background:#128c50;
+  color:white;
+  padding:13px;
+  border-radius:9px;
+  font-weight:800;
+  margin-top:17px;
+}
+
+.pendingNote{
+  background:#fff6df;
+  color:#805d10;
+  padding:12px;
+  border-radius:9px;
+  font-size:13px;
+  line-height:1.5;
+}
+
+@media(max-width:800px){
+  .navlinks{gap:12px}
+  .navlinks a{display:none}
+  .hero h1{font-size:35px}
+  .search{grid-template-columns:1fr}
+  .search button{padding:13px}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .propertyGrid{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:560px){
+  .nav{padding:10px 14px}
+  .logo{font-size:20px}
+  .logoMark{width:37px;height:37px}
+  .hero{padding:47px 15px 55px}
+  .hero h1{font-size:30px}
+  .section{padding:33px 14px}
+  .propertyGrid{grid-template-columns:1fr}
+  .formGrid{grid-template-columns:1fr}
+  .field.full,.submit{grid-column:auto}
+  .facilityChecks{grid-template-columns:1fr 1fr}
+  .previewGrid{grid-template-columns:repeat(3,1fr)}
+  .footer{flex-direction:column}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="#home">
+      <span class="logoMark">CT</span>
+      CT Nest
+    </a>
+
+    <div class="navlinks">
+      <a href="#home">Home</a>
+      <a href="#properties">Properties</a>
+      <a href="#categories">Categories</a>
+      <button class="primary" id="openPost">＋ Post Property</button>
+    </div>
+
+    <button class="primary" id="mobilePost">＋ Post</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="heroInner">
+    <h1>Find Your Perfect Place</h1>
+    <p>Rent, buy or sell properties easily with CT Nest.</p>
+
+    <div class="search">
+      <input id="searchLocation"
+        type="search"
+        placeholder="📍 Search location, e.g. Bharatpur">
+
+      <select id="searchType">
+        <option value="">All Property Types</option>
+        <option value="Rent">Rent</option>
+        <option value="Buy">Buy</option>
+        <option value="Land">Land</option>
+        <option value="Commercial">Commercial</option>
+      </select>
+
+      <button id="searchButton">Search</button>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="categories">
+  <div class="heading">
+    <h2>Explore Categories</h2>
+    <p>Choose what you are looking for</p>
+  </div>
+
+  <div class="categories">
+    <div class="category" data-category="Rent">
+      <div class="icon">🏠</div>
+      <h3>Rent</h3>
+      <p>Rooms, flats & houses</p>
+    </div>
+
+    <div class="category" data-category="Buy">
+      <div class="icon">🏡</div>
+      <h3>Buy House</h3>
+      <p>Find your new home</p>
+    </div>
+
+    <div class="category" data-category="Land">
+      <div class="icon">🌳</div>
+      <h3>Land</h3>
+      <p>Plots & land for sale</p>
+    </div>
+
+    <div class="category" data-category="Commercial">
+      <div class="icon">🏢</div>
+      <h3>Commercial</h3>
+      <p>Shops & office spaces</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="properties">
+  <div class="heading">
+    <h2>Featured Properties</h2>
+    <p>Explore approved properties in Chitwan</p>
+  </div>
+
+  <div class="propertyGrid" id="propertyGrid">
+    <div class="empty">Loading properties...</div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="cta">
+    <h2>Have a property to rent or sell?</h2>
+    <p>Post your property on CT Nest and let people find it easily.</p>
+    <button class="primary" id="ctaPost">＋ Post Your Property</button>
+  </div>
+</section>
+
+<footer>
+  <div class="footer">
+    <div>
+      <strong>CT Nest</strong>
+      <p>Find • Rent • Buy • Sell</p>
+    </div>
+
+    <div>
+      <p>Property marketplace for Chitwan, Nepal</p>
+      <p>© 2026 CT Nest</p>
+    </div>
+  </div>
+</footer>
+
+<!-- POST PROPERTY MODAL -->
+
+<div class="modal" id="postModal">
+  <div class="modalBox">
+    <button class="close" id="closePost" aria-label="Close">×</button>
+
+    <h2>Post Your Property</h2>
+    <p class="sub">Add your property details and photos.</p>
+
+    <div class="pendingNote" style="margin-top:15px">
+      Your property will be submitted for Admin review.
+      It will appear publicly only after approval.
+    </div>
+
+    <form id="postForm" class="formGrid">
+
+      <div class="field">
+        <label for="pType">Property Type</label>
+        <select id="pType" required>
+          <option value="Rent">Rent</option>
+          <option value="Buy">Buy</option>
+          <option value="Land">Land</option>
+          <option value="Commercial">Commercial</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="pPurpose">Purpose</label>
+        <select id="pPurpose" required>
+          <option value="Rent">Rent</option>
+          <option value="Sale">Sale</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label for="pTitle">Property Title</label>
+        <input id="pTitle" maxlength="120"
+          placeholder="e.g. Beautiful 2BHK Flat at Bharatpur"
+          required>
+      </div>
+
+      <div class="field">
+        <label for="pPrice">Price / Rent (Rs.)</label>
+        <input id="pPrice" type="number" min="1"
+          placeholder="15000" required>
+      </div>
+
+      <div class="field">
+        <label for="pLocation">Location</label>
+        <input id="pLocation" maxlength="120"
+          placeholder="Bharatpur-10, Chitwan" required>
+      </div>
+
+      <div class="field full">
+        <label for="pAddress">Address / Landmark</label>
+        <input id="pAddress" maxlength="200"
+          placeholder="Tole, street, nearby landmark">
+      </div>
+
+      <div class="field">
+        <label for="pBeds">Bedrooms</label>
+        <input id="pBeds" type="number" min="0" max="100" value="0">
+      </div>
+
+      <div class="field">
+        <label for="pBaths">Bathrooms</label>
+        <input id="pBaths" type="number" min="0" max="100" value="0">
+      </div>
+
+      <div class="field full">
+        <label>Facilities</label>
+
+        <div class="facilityChecks">
+          <label><input type="checkbox" value="🅿️ Parking"> Parking</label>
+          <label><input type="checkbox" value="💧 Water"> Water</label>
+          <label><input type="checkbox" value="📶 Wi-Fi"> Wi-Fi</label>
+          <label><input type="checkbox" value="🛋️ Furnished"> Furnished</label>
+          <label><input type="checkbox" value="🍳 Kitchen"> Kitchen</label>
+          <label><input type="checkbox" value="⚡ Electricity"> Electricity</label>
+        </div>
+      </div>
+
+      <div class="field full">
+        <label for="pPhotos">Property Photos</label>
+
+        <div class="photoUpload">
+          📸 Select multiple property photos
+
+          <input id="pPhotos" type="file"
+            accept="image/jpeg,image/png,image/webp"
+            multiple>
+
+          <div id="previewGrid" class="previewGrid"></div>
+
+          <p class="photoNote">
+            Phase 1: Photo preview only. Permanent photo upload
+            to Supabase Storage will be connected in Phase 2.
+          </p>
+        </div>
+      </div>
+
+      <div class="field full">
+        <label for="pDesc">Description</label>
+        <textarea id="pDesc" maxlength="2000"
+          placeholder="Tell people about your property..."></textarea>
+      </div>
+
+      <div class="field full">
+        <label for="pContact">WhatsApp Number</label>
+        <input id="pContact" type="tel"
+          maxlength="15"
+          placeholder="98XXXXXXXX" required>
+      </div>
+
+      <button class="submit" id="submitProperty" type="submit">
+        Submit for Approval
+      </button>
+
+    </form>
+  </div>
+</div>
+
+<!-- PROPERTY DETAILS MODAL -->
+
+<div class="modal" id="detailModal">
+  <div class="modalBox" id="detailContent"></div>
+</div>
+
+<script>
+
+/* =================================
+   1. SUPABASE CONFIGURATION
+================================= */
+
+// Keep your existing project URL and Publishable Key.
+
+const SUPABASE_URL =
+"https://hshkkiujxfnhpkhdxbuw.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_UjNy4Jw4zay2FIJG7cR7hQ_dR47uK5r";
+
+const propertiesEndpoint =
+`${SUPABASE_URL}/rest/v1/properties`;
+
+function supabaseHeaders(extra={}){
+  return {
+    apikey:SUPABASE_KEY,
+    Authorization:`Bearer ${SUPABASE_KEY}`,
+    "Content-Type":"application/json",
+    ...extra
+  };
+}
+
+/* =================================
+   2. APP DATA
+================================= */
+
+let dbProperties=[];
+let visibleProperties=[];
+let selectedImages=[];
+
+function esc(value){
+  return String(value ?? "").replace(/[&<>"']/g,char=>({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#039;"
+  })[char]);
+}
+
+function fromDatabase(row){
+  return {
+    id:row.id,
+    title:row.title || "Untitled property",
+    type:row.type || "Rent",
+    purpose:row.purpose || "Rent",
+    price:row.price ?? "",
+    location:row.location || "",
+    address:row.address || "",
+    beds:row.bedrooms ?? 0,
+    baths:row.bathrooms ?? 0,
+    fac:Array.isArray(row.facilities) ? row.facilities : [],
+    desc:row.description || "",
+    contact:row.whatsapp_number || "",
+    photo:row.photo_url || "",
+    status:row.status || "pending",
+    emoji:
+      row.type==="Land" ? "🌳" :
+      row.type==="Commercial" ? "🏢" :
+      row.type==="Buy" ? "🏡" : "🏠"
+  };
+}
+
+/* =================================
+   3. LOAD APPROVED PROPERTIES
+================================= */
+
+async function loadProperties(){
+  const grid=document.getElementById("propertyGrid");
+
+  try{
+    const response=await fetch(
+      `${propertiesEndpoint}?select=*&status=eq.approved&order=created_at.desc`,
+      {headers:supabaseHeaders()}
+    );
+
+    if(!response.ok){
+      const errorText=await response.text();
+      throw new Error(response.status+" "+errorText);
+    }
+
+    const rows=await response.json();
+
+    dbProperties=rows.map(fromDatabase);
+
+    applyFilters();
+
+  }catch(error){
+    console.error("Supabase load error:",error);
+
+    grid.innerHTML=`
+      <div class="empty">
+        Properties could not be loaded.
+        Please check your Supabase connection and database permissions.
+      </div>`;
+  }
+}
+
+/* =================================
+   4. PROPERTY CARD RENDERING
+================================= */
+
+function render(list){
+  const grid=document.getElementById("propertyGrid");
+
+  visibleProperties=list;
+
+  if(!list.length){
+    grid.innerHTML=`
+      <div class="empty">
+        No approved properties found.
+        Try another location or category.
+      </div>`;
+    return;
+  }
+
+  grid.innerHTML=list.map((p,i)=>`
+    <article class="card">
+
+      <div class="photoBox">
+        ${p.photo
+          ? `<img src="${esc(p.photo)}" alt="${esc(p.title)}" loading="lazy">`
+          : `<div class="photoFallback">${p.emoji}</div>`
+        }
+
+        <span class="badge">
+          ${p.type==="Buy" ? "FOR SALE" : esc(p.type.toUpperCase())}
+        </span>
+      </div>
+
+      <div class="cardBody">
+
+        <h3>${esc(p.title)}</h3>
+
+        <div class="location">
+          📍 ${esc(p.location)}
+        </div>
+
+        <div class="price">
+          Rs. ${esc(p.price)}
+          ${p.type==="Rent"
+            ? '<small style="font-size:12px"> / month</small>'
+            : ''
+          }
+        </div>
+
+        <div class="meta">
+          ${Number(p.beds)>0
+            ? `<span>🛏️ ${esc(p.beds)} Beds</span>`
+            : ''
+          }
+
+          ${Number(p.baths)>0
+            ? `<span>🚿 ${esc(p.baths)} Baths</span>`
+            : ''
+          }
+        </div>
+
+        <div class="facilityList" style="margin-top:10px">
+          ${(p.fac || []).map(f=>
+            `<span class="facility">${esc(f)}</span>`
+          ).join("")}
+        </div>
+
+        <button class="view" data-view="${i}">
+          View Details
+        </button>
+
+      </div>
+    </article>
+  `).join("");
+}
+
+/* =================================
+   5. SEARCH AND FILTER
+================================= */
+
+function applyFilters(){
+  const location=
+    document.getElementById("searchLocation")
+    .value.toLowerCase().trim();
+
+  const type=
+    document.getElementById("searchType").value;
+
+  const result=dbProperties.filter(p=>{
+    const matchesLocation=
+      !location ||
+      p.location.toLowerCase().includes(location) ||
+      p.address.toLowerCase().includes(location);
+
+    const matchesType=
+      !type || p.type===type;
+
+    return matchesLocation && matchesType;
+  });
+
+  render(result);
+}
+
+document.getElementById("searchButton")
+.addEventListener("click",()=>{
+  applyFilters();
+
+  document.getElementById("properties")
+  .scrollIntoView({behavior:"smooth"});
+});
+
+document.getElementById("searchLocation")
+.addEventListener("keydown",e=>{
+  if(e.key==="Enter"){
+    applyFilters();
+  }
+});
+
+document.querySelectorAll("[data-category]")
+.forEach(category=>{
+  category.addEventListener("click",()=>{
+    document.getElementById("searchType").value=
+      category.dataset.category;
+
+    applyFilters();
+
+    document.getElementById("properties")
+    .scrollIntoView({behavior:"smooth"});
+  });
+});
+
+/* =================================
+   6. MODAL CONTROLS
+================================= */
+
+const postModal=document.getElementById("postModal");
+const detailModal=document.getElementById("detailModal");
+
+function openPost(){
+  postModal.style.display="block";
+  document.body.style.overflow="hidden";
+}
+
+function closePost(){
+  postModal.style.display="none";
+  document.body.style.overflow="";
+
+  selectedImages=[];
+  document.getElementById("previewGrid").innerHTML="";
+  document.getElementById("pPhotos").value="";
+}
+
+function closeDetails(){
+  detailModal.style.display="none";
+  document.body.style.overflow="";
+}
+
+document.getElementById("openPost")
+.addEventListener("click",openPost);
+
+document.getElementById("mobilePost")
+.addEventListener("click",openPost);
+
+document.getElementById("ctaPost")
+.addEventListener("click",openPost);
+
+document.getElementById("closePost")
+.addEventListener("click",closePost);
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closePost();
+    closeDetails();
+  }
+});
+
+window.addEventListener("click",e=>{
+  if(e.target===postModal)closePost();
+  if(e.target===detailModal)closeDetails();
+});
+
+/* =================================
+   7. MULTIPLE PHOTO PREVIEW
+================================= */
+
+document.getElementById("pPhotos")
+.addEventListener("change",function(){
+
+  const files=Array.from(this.files);
+
+  const preview=document.getElementById("previewGrid");
+  preview.innerHTML="";
+
+  selectedImages=[];
+
+  if(files.length>6){
+    alert("Please select a maximum of 6 photos.");
+    this.value="";
+    return;
+  }
+
+  for(const file of files){
+
+    if(!file.type.startsWith("image/")){
+      alert("Please select image files only.");
+      this.value="";
+      preview.innerHTML="";
+      return;
+    }
+
+    if(file.size>5*1024*1024){
+      alert("Each photo must be smaller than 5 MB.");
+      this.value="";
+      preview.innerHTML="";
+      return;
+    }
+
+    const reader=new FileReader();
+
+    reader.onload=e=>{
+      selectedImages.push(e.target.result);
+
+      const div=document.createElement("div");
+      div.className="preview";
+
+      const img=document.createElement("img");
+      img.src=e.target.result;
+      img.alt="Property photo preview";
+
+      div.appendChild(img);
+      preview.appendChild(div);
+    };
+
+    reader.readAsDataURL(file);
+  }
+});
+
+/* =================================
+   8. PROPERTY DETAILS
+================================= */
+
+function showDetails(p){
+
+  const content=document.getElementById("detailContent");
+
+  const photo=p.photo
+    ? `<img class="detailsPhoto" src="${esc(p.photo)}" alt="${esc(p.title)}">`
+    : "";
+
+  const phone=p.contact.replace(/\D/g,"");
+
+  const whatsappNumber=
+    phone.length===10 ? "977"+phone : phone;
+
+  const whatsappLink=
+    /^[0-9]{10,15}$/.test(whatsappNumber)
+      ? `https://wa.me/${whatsappNumber}`
+      : "";
+
+  content.innerHTML=`
+
+    <button class="close" id="closeDetails">×</button>
+
+    ${photo}
+
+    <h2>${esc(p.title)}</h2>
+
+    <p class="location" style="margin-top:9px">
+      📍 ${esc(p.location)}
+      ${p.address ? " — "+esc(p.address) : ""}
+    </p>
+
+    <div class="price">
+      Rs. ${esc(p.price)}
+      ${p.type==="Rent" ? "/ month" : ""}
+    </div>
+
+    <div class="meta">
+      ${Number(p.beds)>0
+        ? `<span>🛏️ ${esc(p.beds)} Bedrooms</span>`
+        : ""
+      }
+
+      ${Number(p.baths)>0
+        ? `<span>🚿 ${esc(p.baths)} Bathrooms</span>`
+        : ""
+      }
+    </div>
+
+    <div class="facilityList" style="margin-top:14px">
+      ${(p.fac || []).map(f=>
+        `<span class="facility">${esc(f)}</span>`
+      ).join("")}
+    </div>
+
+    <p style="margin-top:17px;color:#596870;line-height:1.6">
+      ${esc(p.desc || "No description provided.")}
+    </p>
+
+    <hr style="border:0;border-top:1px solid #e6ecef;margin:18px 0">
+
+    <p><b>WhatsApp:</b> ${esc(p.contact || "Not provided")}</p>
+
+    ${whatsappLink
+      ? `<a class="contactButton"
+          href="${whatsappLink}"
+          target="_blank"
+          rel="noopener noreferrer">
+          Contact Owner on WhatsApp
+        </a>`
+      : ""
+    }
+  `;
+
+  content.querySelector("#closeDetails")
+  .addEventListener("click",closeDetails);
+
+  detailModal.style.display="block";
+  document.body.style.overflow="hidden";
+}
+
+document.getElementById("propertyGrid")
+.addEventListener("click",e=>{
+  const button=e.target.closest("[data-view]");
+
+  if(!button)return;
+
+  const index=Number(button.dataset.view);
+  const property=visibleProperties[index];
+
+  if(property)showDetails(property);
+});
+
+/* =================================
+   9. PROPERTY FORM SUBMISSION
+================================= */
+
+document.getElementById("postForm")
+.addEventListener("submit",async function(e){
+
+  e.preventDefault();
+
+  const button=document.getElementById("submitProperty");
+
+  const facilities=Array.from(
+    document.querySelectorAll(".facilityChecks input:checked")
+  ).map(input=>input.value);
+
+  const type=document.getElementById("pType").value;
+
+  const contact=document.getElementById("pContact").value.trim();
+
+  const digits=contact.replace(/\D/g,"");
+
+  if(digits.length<10 || digits.length>15){
+    alert("Please enter a valid WhatsApp number.");
+    return;
+  }
+
+  const payload={
+
+    title:document.getElementById("pTitle").value.trim(),
+
+    type:type,
+
+    purpose:document.getElementById("pPurpose").value,
+
+    price:Number(document.getElementById("pPrice").value),
+
+    location:document.getElementById("pLocation").value.trim(),
+
+    address:document.getElementById("pAddress").value.trim(),
+
+    bedrooms:Number(document.getElementById("pBeds").value || 0),
+
+    bathrooms:Number(document.getElementById("pBaths").value || 0),
+
+    facilities:facilities,
+
+    description:document.getElementById("pDesc").value.trim(),
+
+    whatsapp_number:contact,
+
+    photo_url:null,
+
+    status:"pending"
+  };
+
+  button.disabled=true;
+  button.textContent="Submitting...";
+
+  try{
+
+    const response=await fetch(propertiesEndpoint,{
+      method:"POST",
+
+      headers:supabaseHeaders({
+        Prefer:"return=minimal"
+      }),
+
+      body:JSON.stringify(payload)
+    });
+
+    if(!response.ok){
+      const errorText=await response.text();
+      throw new Error(response.status+" "+errorText);
+    }
+
+    this.reset();
+
+    closePost();
+
+    alert(
+      "Your property has been submitted for Admin approval! 🎉"
+    );
+
+  }catch(error){
+
+    console.error("Property submission error:",error);
+
+    alert(
+      "Property could not be submitted. Please check Supabase database permissions and status column. Error: "+
+      error.message
+    );
+
+  }finally{
+
+    button.disabled=false;
+    button.textContent="Submit for Approval";
+
+  }
+
+});
+
+/* =================================
+   10. START WEBSITE
+================================= */
+
+render([]);
+
+loadProperties();
+
+</script>
+</body>
+</html>
